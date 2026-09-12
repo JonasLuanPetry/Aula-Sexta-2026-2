@@ -1,9 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { View, StyleSheet, Text } from "react-native";
+import { Link, Stack } from "expo-router";
+import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   return (
-    <View style={styles.tela}>
+    <SafeAreaView style={styles.tela}>
+  <Stack.Screen options={{ title: "Painel" }} />
       <View style={styles.corDeFundo}>
         <View style={styles.icone}></View>
         <View>
@@ -19,7 +21,7 @@ export default function App() {
             <Text style={styles.botaozinho}>ENVIAR</Text>
           </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
