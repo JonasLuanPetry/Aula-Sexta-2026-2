@@ -47,6 +47,14 @@ export default function Inicio() {
           Abrir perfil →
         </Link>
       </View>
+
+      <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>Aula 18092</Text>
+        <Text style={styles.detalhe}>Pasta aula18092.</Text>
+        <Link href="/imalaia" style={styles.link}>
+          Abrir perfil →
+        </Link>
+      </View>
     </SafeAreaView>
   );
 }
