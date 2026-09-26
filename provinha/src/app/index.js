@@ -1,5 +1,5 @@
 import { Link, Stack } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // Este arquivo é a rota "/" — a tela que abre primeiro.
@@ -14,7 +14,7 @@ export default function Inicio() {
     <SafeAreaView style={styles.tela} edges={["bottom"]}>
       {/* Cada tela pode mexer no próprio cabeçalho */}
       <Stack.Screen options={{ title: "Painel" }} />
-
+      <ScrollView>
       <View style={styles.cabecalho}>
         <View style={styles.avatar} />
         <View>
@@ -55,6 +55,23 @@ export default function Inicio() {
           Abrir perfil →
         </Link>
       </View>
+
+      <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>Aula 20092</Text>
+        <Text style={styles.detalhe}>Pasta aula20092.</Text>
+        <Link href="/lista" style={styles.link}>
+          Abrir perfil →
+        </Link>
+      </View>
+
+      <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>Aula 25092</Text>
+        <Text style={styles.detalhe}>Pasta aula25092.</Text>
+        <Link href="/lista-db" style={styles.link}>
+          Abrir perfil →
+        </Link>
+      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
