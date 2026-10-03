@@ -27,10 +27,19 @@ function remover(id) {
     db.runSync("DELETE FROM tarefas WHERE id = ?", [id]);
 }
 
+function atualizar(texto, prioridade, id) {
+    db.runSync("UPDATE tarefas SET texto = ?, prioridade = ? WHERE id = ?", [
+        texto,
+        prioridade,
+        id,
+    ]);
+}
+
 export default function Lista() {
     const [texto, setTexto] = useState("");
     const [lista, setLista] = useState([]);
     const [prioridade, setPrioridade] = useState("");
+    const [idEditar, setIdEditar] = useState(0);
 
     function carregar() {
         setLista(listar());
@@ -47,9 +56,27 @@ export default function Lista() {
         carregar();
     }
 
+    function guardarOuEditar() {
+        if (idEditar == 0) {
+            salvar(texto, prioridade);
+        } else {
+            atualizar(texto, prioridade, idEditar);
+        }
+        setIdEditar(0);
+        setPrioridade("");
+        setTexto("");
+        carregar();
+    }
+
     function apagar(id) {
         remover(id);
         carregar();
+    }
+
+    function editar(lista) {
+        setIdEditar(lista.id);
+        setTexto(lista.texto);
+        setPrioridade(lista.prioridade);
     }
 
     return (
@@ -57,12 +84,17 @@ export default function Lista() {
             <Stack.Screen options={{ title: "Listinha da Maldade" }} />
             <TextInput style={styles.lugarzinho} value={texto} onChangeText={setTexto} />
             <TextInput style={styles.lugarzinho} value={prioridade} onChangeText={setPrioridade} />
-            <Button title="METER" onPress={salvar} />
+            {idEditar !== 0 ? (
+            <Button title="METER" onPress={guardarOuEditar} />
+            ) : (
+            <Button title="SOCAR" onPress={salvar} />
+            )}
             <FlatList data={lista} renderItem={({ item }) => (
-            <View>    
-                <Text style={styles.item}>{item.texto} - {item.prioridade}</Text>
-                <Button title="APAGAR" onPress={() => apagar(item.id)} />
-            </View>)}/>
+                <View style={styles.itemApagar}>
+                    <Text style={styles.item}>{item.texto} - {item.prioridade}</Text>
+                    <Button title="EXC" onPress={() => apagar(item.id)} />
+                    <Button title="EDT" onPress={() => editar(item)} />
+                </View>)} />
         </SafeAreaView>
     );
 }
@@ -85,5 +117,13 @@ const styles = StyleSheet.create({
         color: "white",
         padding: 10,
         marginTop: 5,
+        flex: 1,
+    },
+
+    itemApagar: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        gap: 10,
     },
 });

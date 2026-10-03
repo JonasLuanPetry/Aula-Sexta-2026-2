@@ -71,6 +71,14 @@ export default function Inicio() {
           Abrir perfil →
         </Link>
       </View>
+
+      <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>Aula 02102</Text>
+        <Text style={styles.detalhe}>Pasta aula02102.</Text>
+        <Link href="/floricultura" style={styles.link}>
+          Abrir perfil →
+        </Link>
+      </View>
       </ScrollView>
     </SafeAreaView>
   );
