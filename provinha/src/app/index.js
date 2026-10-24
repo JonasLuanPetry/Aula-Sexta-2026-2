@@ -73,9 +73,25 @@ export default function Inicio() {
       </View>
 
       <View style={styles.cartao}>
-        <Text style={styles.cartaoTitulo}>Aula 02102</Text>
-        <Text style={styles.detalhe}>Pasta aula02102.</Text>
-        <Link href="/floricultura" style={styles.link}>
+        <Text style={styles.cartaoTitulo}>Aula 23102</Text>
+        <Text style={styles.detalhe}>Pasta aula23102.</Text>
+        <Link href="/cachorro23" style={styles.link}>
+          Abrir perfil →
+        </Link>
+      </View>
+
+      <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>Aula 23103</Text>
+        <Text style={styles.detalhe}>Pasta aula23103.</Text>
+        <Link href="/cnpj23" style={styles.link}>
+          Abrir perfil →
+        </Link>
+      </View>
+
+      <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>Aula 23104</Text>
+        <Text style={styles.detalhe}>Pasta aula23104.</Text>
+        <Link href="/pokemon23" style={styles.link}>
           Abrir perfil →
         </Link>
       </View>
