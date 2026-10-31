@@ -24,9 +24,16 @@ export default function Inicio() {
       </View>
 
       <View style={styles.cartao}>
+        <Text style={styles.cartaoTitulo}>Aula 30102</Text>
+        <Text style={styles.detalhe}>Pasta aula30102.</Text>
+        <Link href="/cemiterio" style={styles.link}>
+          Ver minhas notas →
+        </Link>
+      </View>
+
+      <View style={styles.cartao}>
         <Text style={styles.cartaoTitulo}>Provinha</Text>
         <Text style={styles.detalhe}>Pasta provinha.</Text>
-        {/* href é o caminho do arquivo: notas.js vira "/notas" */}
         <Link href="/cavalo" style={styles.link}>
           Ver minhas notas →
         </Link>
